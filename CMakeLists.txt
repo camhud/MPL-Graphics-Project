@@ -27,7 +27,7 @@ elseif (APPLE)
 endif ()
 
 
-add_executable(graphics graphics.cpp graphics.h)
+add_executable(graphics Graphics.cpp Graphics.h Button.cpp Button.h Quad.cpp Quad.h)
 add_executable(BL_CH_CW_JS_Final_Project_Graphics
         Album.cpp
         Album.h

@@ -5,7 +5,7 @@ using namespace std;
 GLdouble width, height;
 int wd;
 string str;
-Button bt({0.5, 0.5, 0.5}, {250, 250}, 100, 50, "button");
+Button bt({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Artist: ");
 
 void init() {
     width = 500;
@@ -40,6 +40,13 @@ void display() {
      * Draw here
      */
     bt.draw();
+    glEnd();
+
+    glutKeyboardFunc(kbd);
+
+    for (const char &letter : str) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
 
     glFlush();  // Render now
 }

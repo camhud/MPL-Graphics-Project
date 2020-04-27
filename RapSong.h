@@ -27,9 +27,9 @@ public:
     void uniqueWordCounter();
 
     // Requires: nothing
-    // Modifies: uniqueWordPerSec
-    // Effects: takes uniqueWords and divides it by length of song
+    // Modifies: nothing
+    // Effects: takes uniqueWords and divides it by length of song and returns it
     double calculateUniqueStat() override;
 };
 
-#endif //BL_CH_CW_JS_FINAL_PROJECT_MPL_SONG_H
+#endif //BL_CH_CW_JS_FINAL_PROJECT_Graphics_SONG_H

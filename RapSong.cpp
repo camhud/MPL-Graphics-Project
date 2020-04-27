@@ -1,7 +1,7 @@
 //
 // Created by Cameron Hudson on 4/4/20.
 //
-#include "Song.h"
+#include "RapSong.h"
 #include <sstream>
 #include <map>
 #include <algorithm>
@@ -33,7 +33,7 @@ void RapSong::uniqueWordCounter() {
 }
 
 double RapSong::calculateUniqueStat(){
-    double uniqueWordsPerSec = (double)(this->uniqueWords)/this->songLength;
+    double uniqueWordsPerSec = ((double)(this->uniqueWords))/(this->songLength);
     return uniqueWordsPerSec;
 }
 

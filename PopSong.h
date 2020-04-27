@@ -6,55 +6,30 @@
 
 #include <string>
 #include <vector>
+#include "SongV2.h"
 using namespace std;
 
-class Song {
+class PopSong: public Song {
 protected:
-    string songName;
-    double songLength;
-    string lyrics;
-    int totalWordCount;
-
-    // split
-    // Requires: string and a char
-    // Modifies: Nothing
-    // Effects: splits up a string into separate words of a vector
-    vector<string> split(string str, char space);
+    int popularity;
 
 public:
+// Constructor
+    PopSong();
 
-    // Constructor
-    Song();
+    explicit PopSong(string name, double length, string lyrics, int popularityScore);
 
-    virtual ~Song() = default;
+    //getter
+    int getPopularityScore() const;
 
-    explicit Song(string name, double length, string lyrics);
+    //setter
+    void setPopularityScore(int popularityScore) const;
 
-    // Getters
-    virtual string getSongName();
-    virtual int getSongLength();
-    virtual int getUniqueWords();
-    virtual double getUniqueWordsPerSec();
-    virtual string getLyrics();
-    virtual int getTotalWordCount();
-
-    // Setters
-    void setSongName(string songName);
-    void setSongLength(int songLength);
-    void setLyrics(string lyrics);
-    void setTotalWordCount(int totalWordCount);
-
-    // uniqueWordCounter
     // Requires: nothing
-    // Modifies: uniqueWord
-    // Effects: number of unique words in the string vector
-    void uniqueWordCounter();
-
-    // calculateUniqueWordsPerSec
-    // Requires: nothing
-    // Modifies: uniqueWordPerSec
-    // Effects: takes uniqueWords and divides it by length of song
-    void calculateUniqueWordsPerSec();
+    // Modifies: nothing
+    // Effects: takes popularity and divides it by length of song
+    double calculateUniqueStat() override;
 };
 
-#endif //BL_CH_CW_JS_FINAL_PROJECT_MPL_SONG_H
+
+#endif //BL_CH_CW_JS_FINAL_PROJECT_Graphics_SONG_H

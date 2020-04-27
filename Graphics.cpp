@@ -54,7 +54,7 @@ void display() {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
 
-    str = "";
+
 
     album.draw();
     glutKeyboardFunc(kbd);
@@ -155,6 +155,9 @@ void kbd(unsigned char key, int x, int y)
     else if (key == 'z') {
         str += 'z';
     }
+    else if (key = 32) {
+        str += ' ';
+    }
     glutPostRedisplay();
 }
 
@@ -172,6 +175,7 @@ void kbdS(int key, int x, int y) {
         case GLUT_KEY_UP:
 
             break;
+
     }
 
     glutPostRedisplay();

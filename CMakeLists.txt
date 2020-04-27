@@ -30,11 +30,9 @@ endif ()
 add_executable(graphics Graphics.cpp Graphics.h Button.cpp Button.h Quad.cpp Quad.h)
 add_executable(BL_CH_CW_JS_Final_Project_Graphics
         Album.cpp
-        Album.h
-        main.cpp
         Song.cpp
-        Song.h)
-add_executable(graphicsBar BarGraph.h BarGraph.cpp Quad.h Quad.cpp)
+        main.cpp
+        )
 
 if (WIN32)
     target_link_libraries (graphics ${OPENGL_LIBRARIES} freeglut)

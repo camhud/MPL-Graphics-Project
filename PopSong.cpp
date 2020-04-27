@@ -6,10 +6,10 @@
 #include <map>
 #include <algorithm>
 
-PopSong::PopSong() : Song(){
+PopSong::PopSong() : Song() {
 }
 
-PopSong::PopSong(string name, double length, string lyrics, int popularityScore) : Song(name, length, lyrics) {
+PopSong::PopSong(string name, int index, double length, string lyrics, int popularityScore) : Song(name, index, length, lyrics) {
     this->popularity = popularityScore;
 }
 
@@ -17,7 +17,7 @@ int PopSong::getPopularityScore() const {
     return popularity;
 }
 
-void PopSong::setPopularityScore(int popularityScore) const {
+void PopSong::setPopularityScore(int popularityScore) {
     popularity = popularityScore;
 }
 

@@ -31,6 +31,8 @@ add_executable(graphics Graphics.cpp Graphics.h Button.cpp Button.h Quad.cpp Qua
 add_executable(BL_CH_CW_JS_Final_Project_Graphics
         Album.cpp
         Song.cpp
+        RapSong.cpp
+        PopSong.cpp
         main.cpp
         )
 

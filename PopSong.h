@@ -1,29 +1,27 @@
 //
 // Created by Cameron Hudson on 4/4/20.
 //
-#ifndef BL_CH_CW_JS_FINAL_PROJECT_Graphics_SONG_H
-#define BL_CH_CW_JS_FINAL_PROJECT_Graphics_SONG_H
+#ifndef BL_CH_CW_JS_FINAL_PROJECT_Graphics_POPSONG_H
+#define BL_CH_CW_JS_FINAL_PROJECT_Graphics_POPSONG_H
 
+#include "Song.h"
 #include <string>
 #include <vector>
-#include "Song.h"
+
 using namespace std;
 
-class PopSong: public Song {
-protected:
-    int popularity;
-
+class PopSong: public Song{
 public:
 // Constructor
     PopSong();
 
-    explicit PopSong(string name, double length, string lyrics, int popularityScore);
+    explicit PopSong(string name, int index, double length, string lyrics, int popularityScore);
 
     //getter
     int getPopularityScore() const;
 
     //setter
-    void setPopularityScore(int popularityScore) const;
+    void setPopularityScore(int popularityScore);
 
     // Requires: nothing
     // Modifies: nothing
@@ -32,4 +30,4 @@ public:
 };
 
 
-#endif //BL_CH_CW_JS_FINAL_PROJECT_Graphics_SONG_H
+#endif //BL_CH_CW_JS_FINAL_PROJECT_Graphics_POPSONG_H

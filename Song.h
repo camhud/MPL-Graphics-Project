@@ -6,6 +6,7 @@
 
 #include <string>
 #include <vector>
+#include <cstdlib>
 using namespace std;
 
 class Song {
@@ -15,6 +16,7 @@ protected:
     string lyrics;
     int totalWordCount;
     int albumIndex;
+    int popularity;
 
 public:
 

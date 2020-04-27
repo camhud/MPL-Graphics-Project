@@ -23,9 +23,21 @@ BarGraph::BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisL
     maxHeight = maxIndex;
 }
 void BarGraph::drawGraph() {
+    //Draw x-axis
     glBegin(GL_LINES);
-    glVertex2f(10, 10);
-    glVertex2f(20, 20);
+    glColor3f(0,0,0);
+    glVertex2f(startPixelx, startPixely);
+    glVertex2f(startPixelx + xAxisLength,  startPixely);
     glEnd();
+
+    //Draw y-axis
+    glBegin(GL_LINES);
+    glColor3f(0,0,0);
+    glVertex2f(startPixelx, startPixely);
+    glVertex2f(startPixelx,  startPixely + yAxisHeight);
+    glEnd();
+
+
+
     // Don't forget to set the color to the fill field
 }

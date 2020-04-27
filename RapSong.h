@@ -11,28 +11,14 @@ using namespace std;
 
 class RapSong: public Song {
 
+protected:
+    int uniqueWords;
 public:
 
     // Constructor
-    Song();
+    RapSong();
 
-    virtual ~Song() = default;
-
-    explicit Song(string name, double length, string lyrics);
-
-    // Getters
-    virtual string getSongName();
-    virtual int getSongLength();
-    virtual int getUniqueWords();
-    virtual double getUniqueWordsPerSec();
-    virtual string getLyrics();
-    virtual int getTotalWordCount();
-
-    // Setters
-    void setSongName(string songName);
-    void setSongLength(int songLength);
-    void setLyrics(string lyrics);
-    void setTotalWordCount(int totalWordCount);
+    explicit RapSong(string name, double length, string lyrics);
 
     // uniqueWordCounter
     // Requires: nothing
@@ -40,11 +26,10 @@ public:
     // Effects: number of unique words in the string vector
     void uniqueWordCounter();
 
-    // calculateUniqueWordsPerSec
     // Requires: nothing
     // Modifies: uniqueWordPerSec
     // Effects: takes uniqueWords and divides it by length of song
-    void calculateUniqueWordsPerSec();
+    double calculateUniqueStat() override;
 };
 
 #endif //BL_CH_CW_JS_FINAL_PROJECT_MPL_SONG_H

@@ -42,7 +42,7 @@ public:
     void setLyrics(string lyrics);
     void setTotalWordCount(int totalWordCount);
 
-    virtual std::double calculateUniqueStat() = 0;
+    virtual double calculateUniqueStat() = 0;
 };
 
 #endif //BL_CH_CW_JS_FINAL_PROJECT_Graphics_SONG_H

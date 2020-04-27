@@ -4,6 +4,7 @@
 using namespace std;
 GLdouble width, height;
 int wd;
+string str;
 Button bt({0.5, 0.5, 0.5}, {250, 250}, 100, 50, "button");
 
 void init() {
@@ -40,7 +41,6 @@ void display() {
      */
     bt.draw();
 
-
     glFlush();  // Render now
 }
 
@@ -53,6 +53,84 @@ void kbd(unsigned char key, int x, int y)
         exit(0);
     }
 
+    if (key == 'a') {
+        str += 'a';
+    }
+    else if (key == 'b') {
+        str += 'b';
+    }
+    else if (key == 'c') {
+        str += 'c';
+    }
+    else if (key == 'd') {
+        str += 'd';
+    }
+    else if (key == 'e') {
+        str += 'e';
+    }
+    else if (key == 'f') {
+        str += 'f';
+    }
+    else if (key == 'g') {
+        str += 'g';
+    }
+    else if (key == 'h') {
+        str += 'h';
+    }
+    else if (key == 'i') {
+        str += 'i';
+    }
+    else if (key == 'j') {
+        str += 'j';
+    }
+    else if (key == 'k') {
+        str += 'k';
+    }
+    else if (key == 'l') {
+        str += 'l';
+    }
+    else if (key == 'm') {
+        str += 'm';
+    }
+    else if (key == 'n') {
+        str += 'n';
+    }
+    else if (key == 'o') {
+        str += 'o';
+    }
+    else if (key == 'p') {
+        str += 'p';
+    }
+    else if (key == 'q') {
+        str += 'q';
+    }
+    else if (key == 'r') {
+        str += 'r';
+    }
+    else if (key == 's') {
+        str += 's';
+    }
+    else if (key == 't') {
+        str += 't';
+    }
+    else if (key == 'u') {
+        str += 'u';
+    }
+    else if (key == 'v') {
+        str += 'v';
+    }
+    else if (key == 'w') {
+        str += 'w';
+    }
+    else if (key == 'x') {
+        str += 'x';
+    }
+    else if (key == 'y') {
+        str += 'y';
+    }
+    else if (key == 'z') {
+        str += 'z';
+    }
     glutPostRedisplay();
 }
 

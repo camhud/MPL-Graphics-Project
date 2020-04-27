@@ -21,7 +21,7 @@ protected:
 
 public:
     BarGraph();
-    BarGraph(int startPixelx, int startPixely, int maxHeight, int yAxisHeight, int xAxisLength, int yAxisLength, string yAxisTitle, string xAxisTitle, vector<double> uniqueStats);
+    BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisLength, int yAxisLength, string yAxisTitle, string xAxisTitle, vector<double> uniqueStats);
     void drawGraph();
 
 };

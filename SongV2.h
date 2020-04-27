@@ -31,10 +31,10 @@ public:
     explicit Song(string name, double length, string lyrics);
 
     // Getters
-    virtual string getSongName();
-    virtual int getSongLength();
-    virtual string getLyrics();
-    virtual int getTotalWordCount();
+    virtual string getSongName() const;
+    virtual int getSongLength() const;
+    virtual string getLyrics() const;
+    virtual int getTotalWordCount() const;
 
     // Setters
     void setSongName(string songName);

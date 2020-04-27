@@ -6,20 +6,10 @@
 
 #include <string>
 #include <vector>
+#include "SongV2.h"
 using namespace std;
 
-class Song {
-protected:
-    string songName;
-    double songLength;
-    string lyrics;
-    int totalWordCount;
-
-    // split
-    // Requires: string and a char
-    // Modifies: Nothing
-    // Effects: splits up a string into separate words of a vector
-    vector<string> split(string str, char space);
+class RapSong: public Song {
 
 public:
 

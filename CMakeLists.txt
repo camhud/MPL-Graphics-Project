@@ -28,6 +28,7 @@ endif ()
 
 
 add_executable(graphics Graphics.cpp Graphics.h Button.cpp Button.h Quad.cpp Quad.h)
+add_executable(graphicsGraphTester BarGraph.h BarGraph.cpp Quad.cpp Quad.h)
 add_executable(BL_CH_CW_JS_Final_Project_Graphics
         Album.cpp
         Song.cpp

@@ -1,5 +1,4 @@
-#include "Graphics.h"
-#include "Button.h"
+#include "graphics.h"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -8,14 +7,14 @@ GLdouble width, height;
 int wd;
 
 void init() {
-    width = 1000;
-    height = 1000;
+    width = 500;
+    height = 500;
 }
 
 /* Initialize OpenGL Graphics */
 void initGL() {
     // Set "clearing" or background color
-    glClearColor(1.0f, 1.0f, 0.8f, 1.0f); // Black and opaque
+    glClearColor(1.0f, 1.0f, 0.0f, 1.0f); // Black and opaque
 }
 
 /* Handler for window-repaint event. Call back when the window first appears and

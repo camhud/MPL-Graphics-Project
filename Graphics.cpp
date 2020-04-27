@@ -6,10 +6,12 @@ using namespace std;
 
 GLdouble width, height;
 int wd;
+Button spawn({1, 0, 0}, {250, 250}, 100, 50, "button");
 
 void init() {
-    width = 1000;
-    height = 1000;
+    width = 500;
+    height = 500;
+    srand(time(0));
 }
 
 /* Initialize OpenGL Graphics */
@@ -38,6 +40,7 @@ void display() {
     /*
      * Draw here
      */
+    spawn.draw();
 
 
     glFlush();  // Render now
@@ -75,6 +78,11 @@ void kbdS(int key, int x, int y) {
 }
 
 void cursor(int x, int y) {
+    if(spawn.isOverlapping(x, y)) {
+        spawn.hover();
+    } else {
+        spawn.release();
+    }
 
     glutPostRedisplay();
 }
@@ -82,7 +90,11 @@ void cursor(int x, int y) {
 // button will be GLUT_LEFT_BUTTON or GLUT_RIGHT_BUTTON
 // state will be GLUT_UP or GLUT_DOWN
 void mouse(int button, int state, int x, int y) {
-
+    if(button == GLUT_LEFT_BUTTON && spawn.isOverlapping(x, y)) {
+        spawn.pressDown();
+    } else {
+        spawn.release();
+    }
     glutPostRedisplay();
 }
 

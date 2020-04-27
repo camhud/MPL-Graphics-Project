@@ -17,7 +17,7 @@ void Button::draw() const {
     glColor3f(0, 0, 0);
     glRasterPos2i(center.x - (4 * label.length()), center.y + 7);
     for (const char &letter : label) {
-        glutBitmapCharacter(GLUT_BITMAP_8_BY_13, letter);
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
 }
 

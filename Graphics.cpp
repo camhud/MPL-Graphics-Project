@@ -155,7 +155,7 @@ void kbd(unsigned char key, int x, int y)
     else if (key == 'z') {
         str += 'z';
     }
-    else if (key = 32) {
+    else if (key == 32) {
         str += ' ';
     }
     glutPostRedisplay();

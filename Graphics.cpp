@@ -4,7 +4,7 @@
 using namespace std;
 GLdouble width, height;
 int wd;
-Button spawn({1, 0, 0}, {250, 250}, 100, 50, "button");
+Button spawn({0.5, 0.5, 0.5}, {250, 250}, 100, 50, "button");
 
 void init() {
     width = 500;

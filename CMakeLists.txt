@@ -11,3 +11,5 @@ add_executable(BL_CH_CW_JS_Final_Project_Graphics
         main.cpp
         Song.cpp
         Song.h)
+
+add_executable(graphics graphics.cpp)

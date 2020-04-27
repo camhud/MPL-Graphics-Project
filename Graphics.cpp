@@ -1,20 +1,21 @@
 #include "Graphics.h"
-#include <iostream>
-#include <vector>
+#include "Button.h"
+#include <time.h>
 using namespace std;
-
 GLdouble width, height;
 int wd;
+Button spawn({1, 0, 0}, {250, 250}, 100, 50, "button");
 
 void init() {
     width = 500;
     height = 500;
+    srand(time(0));
 }
 
 /* Initialize OpenGL Graphics */
 void initGL() {
     // Set "clearing" or background color
-    glClearColor(1.0f, 1.0f, 0.0f, 1.0f); // Black and opaque
+    glClearColor(1.0f, 1.0f, 0.8f, 0.0f); // Black and opaque
 }
 
 /* Handler for window-repaint event. Call back when the window first appears and
@@ -37,6 +38,7 @@ void display() {
     /*
      * Draw here
      */
+    spawn.draw();
 
 
     glFlush();  // Render now
@@ -74,13 +76,22 @@ void kbdS(int key, int x, int y) {
 }
 
 void cursor(int x, int y) {
-
+    if(spawn.isOverlapping(x, y)) {
+        spawn.hover();
+    } else {
+        spawn.release();
+    }
     glutPostRedisplay();
 }
 
 // button will be GLUT_LEFT_BUTTON or GLUT_RIGHT_BUTTON
 // state will be GLUT_UP or GLUT_DOWN
 void mouse(int button, int state, int x, int y) {
+    if(button == GLUT_LEFT_BUTTON && spawn.isOverlapping(x, y)) {
+        spawn.pressDown();
+    } else {
+        spawn.release();
+    }
 
     glutPostRedisplay();
 }

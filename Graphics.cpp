@@ -1,11 +1,15 @@
 #include "Graphics.h"
 #include "Button.h"
+#include "Quad.h"
 #include <time.h>
 using namespace std;
 GLdouble width, height;
 int wd;
 string str;
 Button bt({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Artist: ");
+Quad artist({1.0, 0, 1.0}, {100, 100}, 250, 50);
+Quad album({0.0, 1.0, 1.0}, {100, 300}, 250, 50);
+
 
 void init() {
     width = 500;
@@ -40,10 +44,23 @@ void display() {
      * Draw here
      */
     bt.draw();
-    glEnd();
 
+    artist.draw();
     glutKeyboardFunc(kbd);
+    glRasterPos2f(0., 0.);
+    glColor3f(0, 0, 0);
+    glRasterPos2i(100 - (4 * str.length()), 100 + 7);
+    for (const char &letter : str) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
 
+    str = "";
+
+    album.draw();
+    glutKeyboardFunc(kbd);
+    glRasterPos2f(0., 0.);
+    glColor3f(0, 0, 0);
+    glRasterPos2i(100 - (4 * str.length()), 300 + 7);
     for (const char &letter : str) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }

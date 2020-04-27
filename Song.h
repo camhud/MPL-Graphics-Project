@@ -1,59 +1,51 @@
 //
 // Created by Cameron Hudson on 4/4/20.
 //
-#ifndef BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_SONG_H
-#define BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_SONG_H
+#ifndef BL_CH_CW_JS_FINAL_PROJECT_Graphics_SONG_H
+#define BL_CH_CW_JS_FINAL_PROJECT_Graphics_SONG_H
 
 #include <string>
 #include <vector>
 using namespace std;
 
 class Song {
-private:
+protected:
     string songName;
     double songLength;
-    int uniqueWords;
-    double uniqueWordsPerSec;
     string lyrics;
     int totalWordCount;
-
-    // split
-    // Requires: string and a char
-    // Modifies: Nothing
-    // Effects: splits up a string into separate words of a vector
-    vector<string> split(string str, char space);
+    int albumIndex;
 
 public:
 
     // Constructor
     Song();
-    Song(string name, double length, string lyrics);
+
+    virtual ~Song() = default;
+
+    explicit Song(string name, int index, double length, string lyrics);
 
     // Getters
-    string getSongName();
-    int getSongLength();
-    int getUniqueWords();
-    double getUniqueWordsPerSec();
-    string getLyrics();
-    int getTotalWordCount();
+    virtual string getSongName() const;
+    virtual double getSongLength() const;
+    virtual string getLyrics() const;
+    virtual int getTotalWordCount() const;
+    virtual int getIndex() const;
 
     // Setters
     void setSongName(string songName);
     void setSongLength(int songLength);
     void setLyrics(string lyrics);
     void setTotalWordCount(int totalWordCount);
+    void setIndex(int index);
 
-    // uniqueWordCounter
-    // Requires: nothing
-    // Modifies: uniqueWord
-    // Effects: number of unique words in the string vector
-    void uniqueWordCounter();
-
-    // calculateUniqueWordsPerSec
-    // Requires: nothing
-    // Modifies: uniqueWordPerSec
-    // Effects: takes uniqueWords and divides it by length of song
-    void calculateUniqueWordsPerSec();
+    virtual double calculateUniqueStat() = 0;
 };
 
-#endif //BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_SONG_H
+// split
+// Requires: string and a char
+// Modifies: Nothing
+// Effects: splits up a string into separate words of a vector
+vector<string> split(string str, char space);
+
+#endif //BL_CH_CW_JS_FINAL_PROJECT_Graphics_SONG_H

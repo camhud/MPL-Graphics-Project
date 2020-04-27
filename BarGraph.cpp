@@ -1,5 +1,6 @@
 
 #include "BarGraph.h"
+#include "Graphics.h"
 
 BarGraph::BarGraph() {
 
@@ -22,20 +23,9 @@ BarGraph::BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisL
     maxHeight = maxIndex;
 }
 void BarGraph::drawGraph() {
-    glBegin(GL_QUADS);
-    glColor3f(getRed(), getGreen(), getBlue());
-    // top left
-    glVertex2i(getLeftX(), getTopY());
-
-    // bottom left
-    glVertex2i(getLeftX(), getBottomY());
-
-    // bottom right
-    glVertex2i(getRightX(), getBottomY());
-
-    // top right
-    glVertex2i(getRightX(), getTopY());
-
+    glBegin(GL_LINES);
+    glVertex2f(10, 10);
+    glVertex2f(20, 20);
     glEnd();
     // Don't forget to set the color to the fill field
 }

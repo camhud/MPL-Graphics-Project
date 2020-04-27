@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import os
 import sys
+from spotify import get_spot_stats
 
 artist = sys.argv[1]
 album = sys.argv[2]
@@ -73,3 +74,4 @@ for song in lyrics:
             if '  ' in lyric or '[' in lyric or ']' in lyric or '-' == lyric or '"' == lyric or '“' == lyric:
                 continue
             outfile.write(lyric + '\n')
+get_spot_stats(album, artist)

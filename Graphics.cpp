@@ -80,6 +80,12 @@ void kbd(unsigned char key, int x, int y)
     if (key == 'a') {
         str += 'a';
     }
+    else if (key == 127) {
+        str.pop_back();
+    }
+    else if (key == ',') {
+        str += ',';
+    }
     else if (key == 'b') {
         str += 'b';
     }

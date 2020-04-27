@@ -9,7 +9,7 @@
 RapSong::RapSong() : Song(){
 }
 
-RapSong::RapSong(string name, int index, double length, string lyrics) : Song(name, index, length, lyrics) {
+RapSong::RapSong(string name, int index, double length, string lyrics, int popularity) : Song(name, index, length, lyrics, popularity) {
     uniqueWordCounter();
 }
 

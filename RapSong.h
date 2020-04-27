@@ -18,7 +18,7 @@ public:
     // Constructor
     RapSong();
 
-    explicit RapSong(string name, int index, double length, string lyrics);
+    explicit RapSong(string name, int index, double length, string lyrics, int popularity);
 
     // uniqueWordCounter
     // Requires: nothing

@@ -25,7 +25,7 @@ public:
 
     virtual ~Song() = default;
 
-    explicit Song(string name, int index, double length, string lyrics);
+    explicit Song(string name, int index, double length, string lyrics, int popScore);
 
     // Getters
     virtual string getSongName() const;
@@ -33,6 +33,7 @@ public:
     virtual string getLyrics() const;
     virtual int getTotalWordCount() const;
     virtual int getIndex() const;
+    int getPopularityScore() const;
 
     // Setters
     void setSongName(string songName);
@@ -40,6 +41,7 @@ public:
     void setLyrics(string lyrics);
     void setTotalWordCount(int totalWordCount);
     void setIndex(int index);
+    void setPopularityScore(int popularityScore);
 
     virtual double calculateUniqueStat() = 0;
 };

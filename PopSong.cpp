@@ -9,16 +9,7 @@
 PopSong::PopSong() : Song() {
 }
 
-PopSong::PopSong(string name, int index, double length, string lyrics, int popularityScore) : Song(name, index, length, lyrics) {
-    this->popularity = popularityScore;
-}
-
-int PopSong::getPopularityScore() const {
-    return popularity;
-}
-
-void PopSong::setPopularityScore(int popularityScore) {
-    popularity = popularityScore;
+PopSong::PopSong(string name, int index, double length, string lyrics, int popularityScore) : Song(name, index, length, lyrics, popularityScore) {
 }
 
 double PopSong::calculateUniqueStat(){

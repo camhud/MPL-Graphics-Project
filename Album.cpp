@@ -20,12 +20,12 @@ void Album::setTrackList(map<string, unique_ptr<Song>>& songMap){
     if (rap) {
         for( auto const& [key, val] : songMap )
         {
-            trackList.insert({key, make_unique<RapSong>(RapSong(val->getSongName(), val->getIndex(), val->getSongLength(), val->getLyrics()))});
+            trackList.insert({key, make_unique<RapSong>(RapSong(val->getSongName(), val->getIndex(), val->getSongLength(), val->getLyrics(), val->getPopularityScore()))});
         }
     } else {
         for( auto const& [key, val] : songMap )
         {
-            trackList.insert({key, make_unique<RapSong>(PopSong(val->getSongName(), val->getIndex(), val->getSongLength(), val->getLyrics(), val->getPopularityScore()))});
+            trackList.insert({key, make_unique<PopSong>(PopSong(val->getSongName(), val->getIndex(), val->getSongLength(), val->getLyrics(), val->getPopularityScore()))});
         }
     }
 }
@@ -75,7 +75,7 @@ map<string,unique_ptr<Song>> readFromFolder(string folder, bool rap) {
             // insert into map
             strReplace(songName, '-', ' ');
             if (rap){
-                album.insert({songName, make_unique<RapSong>(RapSong("hi", 0, 0, content))});
+                album.insert({songName, make_unique<RapSong>(RapSong("hi", 0, 0, content, 0))});
             } else {
                 album.insert({songName, make_unique<PopSong>(PopSong("hi", 0, 0, content, 0))});
             }

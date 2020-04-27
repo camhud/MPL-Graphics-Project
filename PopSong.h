@@ -17,11 +17,6 @@ public:
 
     explicit PopSong(string name, int index, double length, string lyrics, int popularityScore);
 
-    //getter
-    int getPopularityScore() const;
-
-    //setter
-    void setPopularityScore(int popularityScore);
 
     // Requires: nothing
     // Modifies: nothing

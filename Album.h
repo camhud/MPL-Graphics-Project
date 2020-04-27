@@ -2,8 +2,8 @@
 // Created by Brandon Lee
 //
 
-#ifndef BL_CH_CW_JS_FINAL_PROJECT_MPL_ALBUM_H
-#define BL_CH_CW_JS_FINAL_PROJECT_MPL_ALBUM_H
+#ifndef BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_ALBUM_H
+#define BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_ALBUM_H
 #include <string>
 #include <vector>
 #include "Song.h"
@@ -56,4 +56,4 @@ map<string,string> readFromFolder(string folder);
 
 void strReplace(string& word, char old, char newCh);
 
-#endif //BL_CH_CW_JS_FINAL_PROJECT_MPL_ALBUM_H
+#endif //BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_ALBUM_H

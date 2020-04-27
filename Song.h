@@ -1,8 +1,8 @@
 //
 // Created by Cameron Hudson on 4/4/20.
 //
-#ifndef BL_CH_CW_JS_FINAL_PROJECT_MPL_SONG_H
-#define BL_CH_CW_JS_FINAL_PROJECT_MPL_SONG_H
+#ifndef BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_SONG_H
+#define BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_SONG_H
 
 #include <string>
 #include <vector>
@@ -56,4 +56,4 @@ public:
     void calculateUniqueWordsPerSec();
 };
 
-#endif //BL_CH_CW_JS_FINAL_PROJECT_MPL_SONG_H
+#endif //BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_SONG_H

@@ -92,7 +92,7 @@ void timer(int dummy) {
 }
 
 /* Main function: GLUT runs as a console application starting at main()  */
-int main1(int argc, char** argv) {
+int main(int argc, char** argv) {
 
     init();
 

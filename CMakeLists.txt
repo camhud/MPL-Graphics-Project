@@ -26,12 +26,8 @@ elseif (APPLE)
     include_directories(${OPENGL_INCLUDE_DIR}  ${GLUT_INCLUDE_DIRS})
 endif ()
 
-file(GLOB SOURCE_FILES
-        *.cpp
-        *.h
-        )
 
-add_executable(graphics ${SOURCE_FILES})
+add_executable(graphics graphics.cpp graphics.h)
 add_executable(BL_CH_CW_JS_Final_Project_Graphics
         Album.cpp
         Album.h

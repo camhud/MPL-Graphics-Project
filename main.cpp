@@ -30,21 +30,21 @@ int main() {
 
     getInput(artist, album, songMap);
 
-    for( auto const& [key, val] : songMap )
-    {
-        cout << key << val->getSongName();
-    }
-
     // validate that the album exists
     while (songMap.empty()) {
         cout << "It seems the album you typed in doesn't exist or has a typo." << endl;
         getInput(artist, album, songMap);
     }
 
-//    Album owbum = Album(album, artist, songMap, songLengths);
-//    cout << "The mean unique words per second of your album is: " << owbum.getMeanUniqueWordsPerSec() << endl;
-//    cout << "The standard deviation of unique words per second of your album is: " << owbum.getSDUniqueWordsPerSec() << endl;
-//    fs::remove_all("albums");
+    Album owbum = Album(album, artist, songMap, true);
+//    map <string, unique_ptr<Song>> returnAttempt = owbum.getTrackList();
+    for( auto const& [key, val] : songMap)
+    {
+        cout << "Song name: " << val->getSongName()<< endl;
+        cout << "Song length: " << val->getSongLength()<< endl;
+        cout << "Song Index: " << val->getIndex()<< endl;
+        cout << "Song Popularity: " << val->getPopularityScore()<< endl;
+    }
     return 0;
 }
 

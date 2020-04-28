@@ -5,6 +5,19 @@ from spot_cred import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET
 sp = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET))
 sp.trace = False
 
+def clean_name(name):
+    new_name = name.lower()
+    if "/" in new_name:
+        new_name = new_name.replace("/", "")
+    if "?" in new_name:
+        new_name = new_name.replace("?", "")
+    if "," in new_name:
+        new_name = new_name.replace(",", "")
+    if "!" in new_name:
+        new_name = new_name.replace("!", "")
+    if "  " in new_name:
+        new_name = new_name.replace("  ", " ")
+    return new_name
 
 def get_spot_stats(album_name, artist_desired):
     album_name = album_name.replace('-', ' ')
@@ -26,5 +39,5 @@ def get_spot_stats(album_name, artist_desired):
         for track in tracks['items']:
             uri = track['uri']
             full_track = sp.track(uri)
-            outfile.write(full_track["name"] + "," + str(full_track["track_number"]) + "," + str(full_track['duration_ms']/1000) + "," + str(full_track["popularity"]) + '\n')
-
+            new_name = clean_name(full_track["name"])
+            outfile.write(new_name + ", " + str(full_track["track_number"]) + ", " + str(full_track['duration_ms']/1000) + ", " + str(full_track["popularity"]) + '\n')

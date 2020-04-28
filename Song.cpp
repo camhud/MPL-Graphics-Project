@@ -71,8 +71,7 @@ void Song::setPopularityScore(int popularityScore) {
 vector<string> split(string str, char space) {
     vector<string> internal;
     transform(str.begin(), str.end(), str.begin(), ::tolower);
-    str.erase(remove(str.begin(), str.end(), '.'), str.end());
-    str.erase(remove(str.begin(), str.end(), ','), str.end());
+    str.erase(remove(str.begin(), str.end(), '/'), str.end());
     str.erase(remove(str.begin(), str.end(), '?'), str.end());
     str.erase(remove(str.begin(), str.end(), '!'), str.end());
     str.erase(remove(str.begin(), str.end(), ':'), str.end());

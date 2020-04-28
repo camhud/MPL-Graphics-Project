@@ -3,7 +3,7 @@
 //
 
 #include "Album.h"
-
+#include <iostream>
 Album::Album() : name("missing"), artist("Alex Doe"), numSongs(0), rap(true){
 }
 
@@ -58,8 +58,7 @@ map<string,unique_ptr<Song>> readFromFolder(string folder, bool rap) {
     unique_ptr<RapSong> rapSong = make_unique<RapSong>(RapSong());
     // iterate over directory (we can nest this to do multiple albums
     for(auto& p: fs::recursive_directory_iterator(folder)) {
-        if (p.path() != "DS.Store") {
-            RapSong song;
+        if (p.path() != "DS.Store" and p.path().string().find("spot_stats.txt") == string::npos) {
             string filename = p.path().string();
             ifstream file;
             file.open(filename);
@@ -83,7 +82,26 @@ map<string,unique_ptr<Song>> readFromFolder(string folder, bool rap) {
         }
     }
 
-    // TODO Open stats file in album folder and read in each line using the song name to find the right value in the map
+    for(auto& p: fs::recursive_directory_iterator(folder)) {
+        if (p.path().string().find("spot_stats.txt") != string::npos) {
+            string filename = p.path().string();
+            ifstream file;
+            file.open(filename);
+            while(file && file.peek() != EOF){
+                string line;
+                getline(file,line);
+                vector<string> info = split(line, ',');
+                for( auto const& [key, val] : album )
+                {
+                    if (key == info[0]) {
+                        val->setIndex(stoi(info[1]));
+                        val->setSongLength(stod(info[2]));
+                        val->setPopularityScore(stoi(info[3]));
+                    }
+                }
+            }
+        }
+    }
     return album;
 }
 

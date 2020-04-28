@@ -51,6 +51,7 @@ void display() {
     /*
      * Draw here
      */
+    glRasterPos2i(250 - (4 * str.length()), 250 + 7);
     bt.draw();
 
     test.draw();
@@ -59,7 +60,7 @@ void display() {
     glutKeyboardFunc(kbd);
     glRasterPos2f(0., 0.);
     glColor3f(0, 0, 0);
-    glRasterPos2i(100 - (4 * str.length()), 100 + 7);
+    glRasterPos2i(100 - (4 * str.length()), 300 + 7);
     for (const char &letter : str) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }

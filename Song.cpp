@@ -9,12 +9,13 @@
 Song::Song() : songName("song"), songLength(60), lyrics(""), totalWordCount(0), albumIndex(0) {
 }
 
-Song::Song(string name, int index, double length, string lyrics) {
+Song::Song(string name, int index, double length, string lyrics, int popScore) {
     this->songName = name;
     this->songLength = length;
     this->lyrics = lyrics;
     this->totalWordCount = split(lyrics, ' ').size();
     this->albumIndex = index;
+    this->popularity = popScore;
 }
 
 string Song::getSongName() const{
@@ -55,6 +56,14 @@ void Song::setTotalWordCount(int totalWordCount) {
 
 void Song::setIndex(int index) {
     this->albumIndex = index;
+}
+
+int Song::getPopularityScore() const {
+    return popularity;
+}
+
+void Song::setPopularityScore(int popularityScore) {
+    popularity = popularityScore;
 }
 
 

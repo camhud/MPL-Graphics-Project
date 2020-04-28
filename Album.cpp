@@ -3,30 +3,31 @@
 //
 
 #include "Album.h"
-#include <cmath>
 
-Album::Album() : name("missing"), artist("Alex Doe"), numSongs(0){
-    vector<Song> empty;
-    trackList = empty;
+Album::Album() : name("missing"), artist("Alex Doe"), numSongs(0), rap(true){
 }
 
-Album::Album(string title, string artist, map <string, string> songMap, map<string,double> lengthMap) {
+Album::Album(string title, string artist, map<string, unique_ptr<Song>>& songMap, bool rap) {
     strReplace(artist, '-', ' ');
     strReplace(title, '-', ' ');
     this->artist = artist;
     this->name = title;
-    for (auto const &[key, val] : songMap)
-    {
-        string songName = key;
-        strReplace(songName, '-', ' ');
-        Song song = Song(songName, lengthMap[key], val);
-        trackList.push_back(song);
-    }
+    this-> rap = rap;
     numSongs = trackList.size();
 }
 
-void Album::setTrackList(vector<Song> trackList){
-    Album::trackList = trackList;
+void Album::setTrackList(map<string, unique_ptr<Song>>& songMap){
+    if (rap) {
+        for( auto const& [key, val] : songMap )
+        {
+            trackList.insert({key, make_unique<RapSong>(RapSong(val->getSongName(), val->getIndex(), val->getSongLength(), val->getLyrics(), val->getPopularityScore()))});
+        }
+    } else {
+        for( auto const& [key, val] : songMap )
+        {
+            trackList.insert({key, make_unique<PopSong>(PopSong(val->getSongName(), val->getIndex(), val->getSongLength(), val->getLyrics(), val->getPopularityScore()))});
+        }
+    }
 }
 void Album::setName(string name){
     Album::name = name;
@@ -38,7 +39,7 @@ void Album::setNumSongs(int numSongs){
     Album::numSongs = numSongs;
 }
 
-vector<Song> Album::getTrackList() const{
+map<string, unique_ptr<Song>>& Album::getTrackList() {
     return trackList;
 }
 string Album::getName() const{
@@ -51,32 +52,14 @@ int Album::getNumSongs() const{
     return numSongs;
 }
 
-double Album::getMeanUniqueWordsPerSec(){
-    double sum = 0.0;
-    for(Song song : trackList){
-        sum += song.getUniqueWordsPerSec();
-    }
-    double average = sum/((double)trackList.size());
-    return average;
-}
-
-double Album::getSDUniqueWordsPerSec(){
-    double mean = this->getMeanUniqueWordsPerSec();
-    double sum = 0;
-    for(Song song : trackList){
-        double difference = (song.getUniqueWordsPerSec() - mean);
-        sum += (difference*difference);
-    }
-    double quotient = sum / ((double)trackList.size());
-    return sqrt(quotient);
-}
-
 // global functions
-map<string,string> readFromFolder(string folder) {
-    map<string,string> album;
+map<string,unique_ptr<Song>> readFromFolder(string folder, bool rap) {
+    map<string,unique_ptr<Song>> album;
+    unique_ptr<RapSong> rapSong = make_unique<RapSong>(RapSong());
     // iterate over directory (we can nest this to do multiple albums
     for(auto& p: fs::recursive_directory_iterator(folder)) {
         if (p.path() != "DS.Store") {
+            RapSong song;
             string filename = p.path().string();
             ifstream file;
             file.open(filename);
@@ -91,10 +74,16 @@ map<string,string> readFromFolder(string folder) {
             string songName = filename.erase(trashPos, filename.size()).erase(0, garbage.size());
             // insert into map
             strReplace(songName, '-', ' ');
-            album.insert({songName, content});
+            if (rap){
+                album.insert({songName, make_unique<RapSong>(RapSong("hi", 0, 0, content, 0))});
+            } else {
+                album.insert({songName, make_unique<PopSong>(PopSong("hi", 0, 0, content, 0))});
+            }
             file.close();
         }
     }
+
+    // TODO Open stats file in album folder and read in each line using the song name to find the right value in the map
     return album;
 }
 

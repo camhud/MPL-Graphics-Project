@@ -32,6 +32,8 @@ add_executable(graphicsGraphTester BarGraph.h BarGraph.cpp Quad.h Quad.cpp Graph
 add_executable(BL_CH_CW_JS_Final_Project_Graphics
         Album.cpp
         Song.cpp
+        RapSong.cpp
+        PopSong.cpp
         main.cpp
         )
 

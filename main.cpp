@@ -37,7 +37,6 @@ int main() {
     }
 
     Album owbum = Album(album, artist, songMap, true);
-//    map <string, unique_ptr<Song>> returnAttempt = owbum.getTrackList();
     for( auto const& [key, val] : songMap)
     {
         cout << "Song name: " << val->getSongName()<< endl;

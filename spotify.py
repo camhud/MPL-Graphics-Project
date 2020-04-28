@@ -11,10 +11,12 @@ def clean_name(name):
         new_name = new_name.replace("/", "")
     if "?" in new_name:
         new_name = new_name.replace("?", "")
-    if "," in new_name:
-        new_name = new_name.replace(",", "")
     if "!" in new_name:
         new_name = new_name.replace("!", "")
+    if "." in new_name:
+        new_name = new_name.replace(".", "")
+    if "feat" in new_name:
+        new_name = new_name[:new_name.find("feat") -1]
     if "  " in new_name:
         new_name = new_name.replace("  ", " ")
     return new_name

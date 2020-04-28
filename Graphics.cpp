@@ -27,9 +27,6 @@ bool rap = true;
 SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Submit");
 BooleanButton b({1.0, 1.0, 0.0}, {250, 310}, 250, 50, "Not rap?");
 //SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "test");
-
-
-
 Quad input({0.0, 1.0, 1.0}, {100, 500}, 250, 50);
 vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
 BarGraph test(500, 500, 300, 300, "title", "test", "test", testVector);
@@ -66,7 +63,7 @@ void display() {
     /*
      * Draw here
      */
-    glRasterPos2i(250 - (4 * str.length()), 250 + 7);
+//    glRasterPos2i(250 - (4 * str.length()), 250 + 7);
     s.draw();
     b.draw();
     test.draw();
@@ -268,6 +265,7 @@ void artistAlbum() {
 void typeMusic() {
     bool change = !rap;
     rap = change;
+    cout << boolalpha << rap;
 }
 
 

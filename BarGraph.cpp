@@ -44,7 +44,11 @@ void BarGraph::draw() const{
     //calculate bar lengths and heights
     int barWidth = (xAxisLength - (2*numBars))/numBars;
     int heightMultiplier = (yAxisHeight)/maxHeight;
+<<<<<<< Updated upstream
     // cout<<heightMultiplier << ", " << yAxisHeight << ", " << maxHeight << endl;
+=======
+    //cout<<heightMultiplier << ", " << yAxisHeight << ", " << maxHeight << endl;
+>>>>>>> Stashed changes
     int leftX = startPixelx;
     int bottomY = startPixely;
 
@@ -72,6 +76,15 @@ void BarGraph::draw() const{
 
         leftX = rightX;
     }
+    int xCenter = startPixelx + (xAxisLength/2);
+    int yCenter = startPixely + 15;
+    glColor3f(0, 0, 0);
+    glRasterPos2i(xCenter - (4 * xAxisTitle.length()), yCenter + 7);
+    for (const char &letter : xAxisTitle) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
+
+
 
     // Don't forget to set the color to the fill field
 }

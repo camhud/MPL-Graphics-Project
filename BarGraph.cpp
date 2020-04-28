@@ -9,11 +9,12 @@
 using namespace std;
 
 
-BarGraph::BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisLength, string yAxisTitle, string xAxisTitle, vector<double> uniqueStats){
+BarGraph::BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisLength, string title, string yAxisTitle, string xAxisTitle, vector<double> uniqueStats){
     this->startPixelx = startPixelx;
     this->startPixely = startPixely;
     this->yAxisHeight = yAxisHeight;
     this->xAxisLength = xAxisLength;
+    this->title = title;
     this->yAxisTitle = yAxisTitle;
     this->xAxisTitle = xAxisTitle;
     this->uniqueStats = uniqueStats;
@@ -47,7 +48,7 @@ void BarGraph::draw() const{
 
     int leftX = startPixelx;
     int bottomY = startPixely;
-
+    // draws the bars of the bar graph
     for(int c = 0; c < numBars; c++){
 
         leftX = leftX + 2;
@@ -72,6 +73,17 @@ void BarGraph::draw() const{
 
         leftX = rightX;
     }
+
+    //Draws x-axis title
+    int xCenterTitle = startPixelx + (xAxisLength/2);
+    int yCenterTitle = startPixely - yAxisHeight - 15;
+    glColor3f(0, 0, 0);
+    glRasterPos2i(xCenterTitle - (4 * title.length()), yCenterTitle - 15);
+    for (const char &letter : title) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
+
+    //Draws x-axis title
     int xCenter = startPixelx + (xAxisLength/2);
     int yCenter = startPixely + 15;
     glColor3f(0, 0, 0);
@@ -80,6 +92,7 @@ void BarGraph::draw() const{
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
 
+    //Draws y-axis title
     int xCenterYTitle = startPixelx - 5*(yAxisTitle.length()) - 7;
     int yCenterYTitle = startPixely - (yAxisHeight/2);
     glColor3f(0, 0, 0);

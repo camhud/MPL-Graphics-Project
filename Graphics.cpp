@@ -16,7 +16,7 @@ string album;
 Button bt({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Submit");
 Quad input({0.0, 1.0, 1.0}, {100, 300}, 250, 50);
 vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
-BarGraph test(400, 500, 300, 300, "test", "test", testVector);
+BarGraph test(400, 500, 300, 300, "title", "test", "test", testVector);
 
 
 void init() {

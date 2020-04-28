@@ -82,6 +82,8 @@ map<string,unique_ptr<Song>> readFromFolder(string folder, bool rap) {
             file.close();
         }
     }
+
+    // TODO Open stats file in album folder and read in each line using the song name to find the right value in the map
     return album;
 }
 

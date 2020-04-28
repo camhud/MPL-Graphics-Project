@@ -36,7 +36,6 @@ int main() {
         getInput(artist, album, songMap);
     }
 
-    Album owbum = Album(album, artist, songMap, true);
     for( auto const& [key, val] : songMap)
     {
         cout << "Song name: " << val->getSongName()<< endl;
@@ -44,6 +43,7 @@ int main() {
         cout << "Song Index: " << val->getIndex()<< endl;
         cout << "Song Popularity: " << val->getPopularityScore()<< endl;
     }
+    fs::remove_all("albums");
     return 0;
 }
 

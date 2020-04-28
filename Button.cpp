@@ -24,10 +24,8 @@ void Button::draw() const {
 
 /* Returns true if the coordinate is inside the box */
 bool Button::isOverlapping(int x, int y) const {
-    if((x > getLeftX() && x < getRightX()) && (y > getTopY() && y < getBottomY())) {
-        return true;
-    }
-    return false; // Placeholder for compilation
+    return (x > getLeftX() && x < getRightX()) && (y > getTopY() && y < getBottomY());
+    // Placeholder for compilation
 }
 
 /* Change color of the box when the user is hovering over it */

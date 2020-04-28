@@ -31,5 +31,8 @@
 *.out
 *.app
 
+# Cython Fix
+__pycache__/
+
 cmake-build-debug/
 .idea/

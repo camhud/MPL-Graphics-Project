@@ -6,6 +6,7 @@
 #include <vector>
 #include "Graphics.h"
 
+
 using namespace std;
 class BarGraph {
 protected:

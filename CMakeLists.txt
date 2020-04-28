@@ -3,7 +3,7 @@ project(BL_CH_CW_JS_Final_Project_Graphics)
 
 if (WIN32)
     set(FREEGLUT_INCLUDE_DIRS "C:/Program\ Files/Common\ Files/freeglut/include")
-    set(FREEGLUT_LIBRARY_DIRS "C:/Program\ Files/Common\ Files/freeglut/lib")
+    set(FREEGLUT_LIBRARY_DIRS "C:/Program\ Files/Common\ Files/freeglut/lib/")
 endif (WIN32)
 
 set(CMAKE_CXX_STANDARD 17)

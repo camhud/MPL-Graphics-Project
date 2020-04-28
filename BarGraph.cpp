@@ -1,4 +1,4 @@
-
+#include<windows.h>
 #include "BarGraph.h"
 #include<iostream>
 using namespace std;

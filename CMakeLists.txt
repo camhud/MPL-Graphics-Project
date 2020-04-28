@@ -35,7 +35,7 @@ add_executable(BL_CH_CW_JS_Final_Project_Graphics
         RapSong.cpp
         PopSong.cpp
         main.cpp
-        )
+        SubmitButton.cpp SubmitButton.h)
 
 if (WIN32)
     target_link_libraries (graphics ${OPENGL_LIBRARIES} freeglut)

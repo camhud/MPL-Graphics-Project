@@ -4,7 +4,8 @@
 #ifndef BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_GRAPHICS_H
 #define BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_GRAPHICS_H
 #define GL_SILENCE_DEPRECATION
-
+#include <vector>
+#include <string>
 #include <stdlib.h>
 #ifdef _WIN32
 #include <windows.h>
@@ -44,5 +45,8 @@ void timer(int dummy);
 
 // Handle mouse button pressed and released events
 void mouse(int button, int state, int x, int y);
+
+// first index is artist, second index is album
+void artistAlbum();
 
 #endif //BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_GRAPHICS_H

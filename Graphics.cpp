@@ -216,12 +216,12 @@ void cursor(int x, int y) {
 // button will be GLUT_LEFT_BUTTON or GLUT_RIGHT_BUTTON
 // state will be GLUT_UP or GLUT_DOWN
 void mouse(int button, int state, int x, int y) {
-    if(button == GLUT_LEFT_BUTTON && s.isOverlapping(x, y)) {
+    if(button == GLUT_LEFT_BUTTON && s.isOverlapping(x, y) && state == GLUT_DOWN) {
         s.pressDown();
     } else {
         s.release();
     }
-    if(button == GLUT_LEFT_BUTTON && b.isOverlapping(x, y)) {
+    if(button == GLUT_LEFT_BUTTON && b.isOverlapping(x, y) && state == GLUT_DOWN) {
         b.pressDown();
     } else {
         b.release();

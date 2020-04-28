@@ -104,3 +104,68 @@ void BarGraph::draw() const{
 
     // Don't forget to set the color to the fill field
 }
+
+
+//Getters
+int BarGraph::getStartPixelx() const{
+    return startPixelx;
+}
+int BarGraph::getStartPixely() const{
+    return startPixely;
+}
+int BarGraph::getNumBars() const{
+    return numBars;
+}
+double BarGraph::getMaxHeight() const{
+    return maxHeight;
+}
+int BarGraph::getYAxisHeight() const{
+    return yAxisHeight;
+}
+int BarGraph::getXAxisLength() const{
+    return xAxisLength;
+}
+string BarGraph::getTitle() const{
+    return title;
+}
+string BarGraph::getYaAxisTitle() const{
+    return yAxisTitle;
+}
+string BarGraph::getXAxisTitle() const{
+    return xAxisTitle;
+}
+vector<double> BarGraph::getUniqueStats() const{
+    return uniqueStats;
+}
+
+//Setters
+void BarGraph::setStartPixelx(int startPixelx) {
+    this->startPixelx=startPixelx;
+}
+void BarGraph::setStartPixely(int startPixely){
+    this->startPixely=startPixely;
+}
+void BarGraph::setNumBars(int numBars){
+    this->numBars=numBars;
+}
+void BarGraph::setMaxHeight(double maxHeight){
+    this->maxHeight=maxHeight;
+}
+void BarGraph::setYAxisHeight(int yAxisHeight){
+    this->yAxisHeight=yAxisHeight;
+}
+void BarGraph::setXAxisLength(int xAxisLength){
+    this->xAxisLength=xAxisLength;
+}
+void BarGraph::setTitle(string title){
+    this->title=title;
+}
+void BarGraph::setYaAxisTitle(string yAxisTitle){
+    this->yAxisTitle=yAxisTitle;
+}
+void BarGraph::setXAxisTitle(string xAxisTitle){
+    this->xAxisTitle=xAxisTitle;
+}
+void BarGraph::setUniqueStats(vector<double> uniqueStats){
+    this->uniqueStats=uniqueStats;
+}

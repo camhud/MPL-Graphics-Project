@@ -1,4 +1,9 @@
-#include<windows.h>
+#include <stdlib.h>
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <sys/time.h>
+#endif
 #include "BarGraph.h"
 #include<iostream>
 using namespace std;

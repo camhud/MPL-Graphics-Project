@@ -75,9 +75,9 @@ map<string,unique_ptr<Song>> readFromFolder(string folder, bool rap) {
             // insert into map
             strReplace(songName, '-', ' ');
             if (rap){
-                album.insert({songName, make_unique<RapSong>(RapSong("hi", 0, 0, content, 0))});
+                album.insert({songName, make_unique<RapSong>(RapSong(songName, 0, 0, content, 0))});
             } else {
-                album.insert({songName, make_unique<PopSong>(PopSong("hi", 0, 0, content, 0))});
+                album.insert({songName, make_unique<PopSong>(PopSong(songName, 0, 0, content, 0))});
             }
             file.close();
         }

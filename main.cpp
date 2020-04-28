@@ -30,6 +30,11 @@ int main() {
 
     getInput(artist, album, songMap);
 
+    for( auto const& [key, val] : songMap )
+    {
+        cout << key << val->getSongName();
+    }
+
     // validate that the album exists
     while (songMap.empty()) {
         cout << "It seems the album you typed in doesn't exist or has a typo." << endl;

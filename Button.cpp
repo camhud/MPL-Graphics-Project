@@ -3,6 +3,7 @@
 //
 #include "Button.h"
 #include "Graphics.h"
+#include <iostream>
 using namespace std;
 
 Button::Button(color fill, point center, unsigned int width, unsigned int height, std::string label) : Quad(fill, center, width, height) {
@@ -40,7 +41,7 @@ void Button::pressDown() {
     try {
         artistAlbum();
     } catch (...) {
-        cout << "Something went wrong, please make sure everything is spelled correctly."
+        cout << "Something went wrong, please make sure everything is spelled correctly." << endl;
     }
 
 }

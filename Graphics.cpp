@@ -1,16 +1,20 @@
 #include "Graphics.h"
 #include "Button.h"
+//#include "SubmitButton.h"
 #include "Quad.h"
 #include "BarGraph.h"
 #include <time.h>
-#include <vector>
+#include <sstream>
+#include <iostream>
 using namespace std;
 GLdouble width, height;
 int wd;
 string str;
-Button bt({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Artist: ");
-Quad artist({1.0, 0, 1.0}, {100, 100}, 250, 50);
-Quad album({0.0, 1.0, 1.0}, {100, 300}, 250, 50);
+string artist;
+string album;
+
+Button bt({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Submit");
+Quad input({0.0, 1.0, 1.0}, {100, 300}, 250, 50);
 vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
 BarGraph test(400, 500, 300, 300, "test", "test", testVector);
 
@@ -51,7 +55,7 @@ void display() {
 
     test.draw();
 
-    artist.draw();
+    input.draw();
     glutKeyboardFunc(kbd);
     glRasterPos2f(0., 0.);
     glColor3f(0, 0, 0);
@@ -62,14 +66,14 @@ void display() {
 
 
 
-    album.draw();
-    glutKeyboardFunc(kbd);
-    glRasterPos2f(0., 0.);
-    glColor3f(0, 0, 0);
-    glRasterPos2i(100 - (4 * str.length()), 300 + 7);
-    for (const char &letter : str) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
-    }
+//    album.draw();
+//    glutKeyboardFunc(kbd);
+//    glRasterPos2f(0., 0.);
+//    glColor3f(0, 0, 0);
+//    glRasterPos2i(100 - (4 * str.length()), 300 + 7);
+//    for (const char &letter : str) {
+//        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+//    }
 
     glFlush();  // Render now
 }
@@ -218,6 +222,22 @@ void timer(int dummy) {
 
     glutPostRedisplay();
     glutTimerFunc(30, timer, dummy);
+}
+
+// first index is artist, second index is album
+void artistAlbum() {
+    std::vector<std::string> data;
+    std::stringstream ss(str);
+    while(ss.good())
+    {
+        string substr;
+        getline(ss, substr, ',');
+        data.push_back(substr);
+    }
+    artist = data[0];
+    album = data[1];
+    cout << artist << endl;
+    cout << album << endl;
 }
 
 /* Main function: GLUT runs as a console application starting at main()  */

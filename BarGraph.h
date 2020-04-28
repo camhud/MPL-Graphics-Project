@@ -1,10 +1,10 @@
 
-#ifndef BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_QUAD_H
-#define BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_QUAD_H
+#ifndef BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_BARGRAPH_H
+#define BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_BARGRAPH_H
 
-#include "Quad.h"
 #include <string>
 #include <vector>
+#include "Graphics.h"
 
 using namespace std;
 class BarGraph {
@@ -20,11 +20,12 @@ protected:
     vector<double> uniqueStats;
 
 public:
-    BarGraph();
-    BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisLength, int yAxisLength, string yAxisTitle, string xAxisTitle, vector<double> uniqueStats);
-    void drawGraph();
+    BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisLength, string yAxisTitle, string xAxisTitle, vector<double> uniqueStats);
+    virtual void draw() const;
+
+    int getStartPixelx();
 
 };
 
 
-#endif //BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_QUAD_H
+#endif //BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_BARGRAPH_H

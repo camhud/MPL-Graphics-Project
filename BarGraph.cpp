@@ -1,11 +1,8 @@
 
 #include "BarGraph.h"
-#include "Graphics.h"
 
-BarGraph::BarGraph() {
 
-}
-BarGraph::BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisLength, int yAxisLength, string yAxisTitle, string xAxisTitle, vector<double> uniqueStats){
+BarGraph::BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisLength, string yAxisTitle, string xAxisTitle, vector<double> uniqueStats){
     this->startPixelx = startPixelx;
     this->startPixely = startPixely;
     this->yAxisHeight = yAxisHeight;
@@ -22,7 +19,7 @@ BarGraph::BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisL
     }
     maxHeight = maxIndex;
 }
-void BarGraph::drawGraph() {
+void BarGraph::draw() const{
     //Draw x-axis
     glBegin(GL_LINES);
     glColor3f(0,0,0);
@@ -37,7 +34,37 @@ void BarGraph::drawGraph() {
     glVertex2f(startPixelx,  startPixely + yAxisHeight);
     glEnd();
 
+    //calculate bar lengths and heights
+    int barWidth = (xAxisLength - (2*numBars))/numBars;
+    int heightMultiplier = (yAxisHeight - 10)/maxHeight;
 
+    int leftX = startPixelx;
+    int bottomY = startPixely;
+
+    for(int c = 0; c < numBars; c++){
+
+        leftX = leftX + 2;
+        int rightX = leftX + barWidth;
+        int topY = bottomY + (uniqueStats[c] * heightMultiplier);
+
+        glBegin(GL_QUADS);
+        glColor3f(0,0,1);
+        // top left
+        glVertex2i(leftX, topY);
+
+        // bottom left
+        glVertex2i(leftX, bottomY);
+
+        // bottom right
+        glVertex2i(rightX, bottomY);
+
+        // top right
+        glVertex2i(rightX, topY);
+
+        glEnd();
+
+        leftX = rightX;
+    }
 
     // Don't forget to set the color to the fill field
 }

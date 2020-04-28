@@ -13,8 +13,8 @@ string str;
 string artist;
 string album;
 
-Button bt({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Submit");
-SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "test");
+SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Submit");
+//SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "test");
 
 Quad input({0.0, 1.0, 1.0}, {100, 300}, 250, 50);
 vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
@@ -54,7 +54,6 @@ void display() {
      * Draw here
      */
     glRasterPos2i(250 - (4 * str.length()), 250 + 7);
-    bt.draw();
     s.draw();
 
     test.draw();
@@ -202,10 +201,10 @@ void kbdS(int key, int x, int y) {
 }
 
 void cursor(int x, int y) {
-    if(bt.isOverlapping(x, y)) {
-        bt.hover();
+    if(s.isOverlapping(x, y)) {
+        s.hover();
     } else {
-        bt.release();
+        s.release();
     }
     glutPostRedisplay();
 }
@@ -213,10 +212,10 @@ void cursor(int x, int y) {
 // button will be GLUT_LEFT_BUTTON or GLUT_RIGHT_BUTTON
 // state will be GLUT_UP or GLUT_DOWN
 void mouse(int button, int state, int x, int y) {
-    if(button == GLUT_LEFT_BUTTON && bt.isOverlapping(x, y)) {
-        bt.pressDown();
+    if(button == GLUT_LEFT_BUTTON && s.isOverlapping(x, y)) {
+        s.pressDown();
     } else {
-        bt.release();
+        s.release();
     }
 
     glutPostRedisplay();
@@ -240,8 +239,6 @@ void artistAlbum() {
     }
     artist = data[0];
     album = data[1];
-    cout << artist << endl;
-    cout << album << endl;
 }
 
 /* Main function: GLUT runs as a console application starting at main()  */

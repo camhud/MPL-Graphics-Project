@@ -38,8 +38,11 @@ void SubmitButton::hover() {
 /* Change color of the box when the user is clicking on it */
 void SubmitButton::pressDown() {
     setColor(pressFill);
-    artistAlbum();
-    cout << "I WAS CLICKEd" << endl;
+    try {
+        artistAlbum();
+    } catch (...) {
+        cout << "Something went wrong, please make sure everything is spelled correctly." << endl;
+    }
 }
 
 /* Change the color back when the user is not clicking/hovering */

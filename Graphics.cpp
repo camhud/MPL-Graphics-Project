@@ -12,7 +12,7 @@ Button bt({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Artist: ");
 Quad artist({1.0, 0, 1.0}, {100, 100}, 250, 50);
 Quad album({0.0, 1.0, 1.0}, {100, 300}, 250, 50);
 vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
-BarGraph test(300, 300, 300, 300, "test", "test", testVector);
+BarGraph test(400, 500, 300, 300, "test", "test", testVector);
 
 
 void init() {

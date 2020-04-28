@@ -1,5 +1,7 @@
 
 #include "BarGraph.h"
+#include<iostream>
+using namespace std;
 
 
 BarGraph::BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisLength, string yAxisTitle, string xAxisTitle, vector<double> uniqueStats){
@@ -17,7 +19,7 @@ BarGraph::BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisL
             maxIndex = c;
         }
     }
-    maxHeight = maxIndex;
+    maxHeight = uniqueStats[maxIndex];
 }
 void BarGraph::draw() const{
     //Draw x-axis
@@ -31,13 +33,13 @@ void BarGraph::draw() const{
     glBegin(GL_LINES);
     glColor3f(0,0,0);
     glVertex2f(startPixelx, startPixely);
-    glVertex2f(startPixelx,  startPixely + yAxisHeight);
+    glVertex2f(startPixelx,  startPixely - yAxisHeight);
     glEnd();
 
     //calculate bar lengths and heights
     int barWidth = (xAxisLength - (2*numBars))/numBars;
-    int heightMultiplier = (yAxisHeight - 10)/maxHeight;
-
+    int heightMultiplier = (yAxisHeight)/maxHeight;
+    cout<<heightMultiplier << endl;
     int leftX = startPixelx;
     int bottomY = startPixely;
 
@@ -45,7 +47,7 @@ void BarGraph::draw() const{
 
         leftX = leftX + 2;
         int rightX = leftX + barWidth;
-        int topY = bottomY + (uniqueStats[c] * heightMultiplier);
+        int topY = bottomY - (uniqueStats[c] * heightMultiplier);
 
         glBegin(GL_QUADS);
         glColor3f(0,0,1);

@@ -80,6 +80,13 @@ void BarGraph::draw() const{
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
 
+    int xCenterYTitle = startPixelx - 5*(yAxisTitle.length()) - 7;
+    int yCenterYTitle = startPixely - (yAxisHeight/2);
+    glColor3f(0, 0, 0);
+    glRasterPos2i(xCenterYTitle - (4 * yAxisTitle.length()), yCenterYTitle);
+    for (const char &letter : yAxisTitle) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
 
 
     // Don't forget to set the color to the fill field

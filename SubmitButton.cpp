@@ -39,7 +39,7 @@ void SubmitButton::hover() {
 void SubmitButton::pressDown() {
     setColor(pressFill);
     artistAlbum();
-    cout << 'I WAS CLICKEd' << endl
+    cout << "I WAS CLICKEd" << endl;
 }
 
 /* Change the color back when the user is not clicking/hovering */

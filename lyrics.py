@@ -74,4 +74,5 @@ for song in lyrics:
             if '  ' in lyric or '[' in lyric or ']' in lyric or '-' == lyric or '"' == lyric or '“' == lyric:
                 continue
             outfile.write(lyric + '\n')
+# TODO if we dont get spot stats clear directory to flag they need to input a new album and artist
 get_spot_stats(album, artist)

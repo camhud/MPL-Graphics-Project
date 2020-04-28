@@ -20,6 +20,9 @@ protected:
     vector<double> uniqueStats;
 
 public:
+    //Takes in start pixel for x,y (this is where the graph will "start"). THe axis length is also inputted as will as the titles.
+    //This also takes in a vector of unique stats. These unique stats are EXPECTED to be in order of tracklist, so that the first element
+    //corresponds to the first song
     BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisLength, string yAxisTitle, string xAxisTitle, vector<double> uniqueStats);
     virtual void draw() const;
 

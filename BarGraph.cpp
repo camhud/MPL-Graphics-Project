@@ -39,7 +39,7 @@ void BarGraph::draw() const{
     //calculate bar lengths and heights
     int barWidth = (xAxisLength - (2*numBars))/numBars;
     int heightMultiplier = (yAxisHeight)/maxHeight;
-    cout<<heightMultiplier << endl;
+    cout<<heightMultiplier << ", " << yAxisHeight << ", " << maxHeight << endl;
     int leftX = startPixelx;
     int bottomY = startPixely;
 

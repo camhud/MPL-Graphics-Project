@@ -12,7 +12,7 @@ protected:
     int startPixelx;
     int startPixely;
     int numBars;
-    int maxHeight;
+    double maxHeight;
     int yAxisHeight;
     int xAxisLength;
     string yAxisTitle;

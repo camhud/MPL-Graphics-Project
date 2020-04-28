@@ -1,25 +1,38 @@
 #include "Graphics.h"
 #include "Quad.h"
-#include "Button.h"
 #include "SubmitButton.h"
+#include "BooleanButton.h"
 #include "BarGraph.h"
+#include "Album.h"
+#include "Song.h"
+#include "RapSong.h"
+#include "PopSong.h"
 #include <time.h>
 #include <sstream>
 #include <iostream>
+#ifdef _WIN32
+const string python = "python";
+#else
+const string python = "python3";
+#endif
 using namespace std;
 GLdouble width, height;
 int wd;
 string str;
 string artist;
 string album;
+vector<double> heights;
+bool rap = true;
 
 SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Submit");
+BooleanButton b({1.0, 1.0, 0.0}, {250, 310}, 250, 50, "Not rap?");
 //SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "test");
 
-Quad input({0.0, 1.0, 1.0}, {100, 300}, 250, 50);
-vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
-BarGraph test(400, 500, 300, 300, "title", "test", "test", testVector);
 
+
+Quad input({0.0, 1.0, 1.0}, {100, 500}, 250, 50);
+vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
+BarGraph test(500, 500, 300, 300, "title", "test", "test", testVector);
 
 void init() {
     width = 1000;
@@ -55,28 +68,17 @@ void display() {
      */
     glRasterPos2i(250 - (4 * str.length()), 250 + 7);
     s.draw();
-
+    b.draw();
     test.draw();
-
     input.draw();
     glutKeyboardFunc(kbd);
     glRasterPos2f(0., 0.);
     glColor3f(0, 0, 0);
-    glRasterPos2i(100 - (4 * str.length()), 300 + 7);
+    glRasterPos2i(100 - (4 * str.length()), 500 + 7);
     for (const char &letter : str) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
 
-
-
-//    album.draw();
-//    glutKeyboardFunc(kbd);
-//    glRasterPos2f(0., 0.);
-//    glColor3f(0, 0, 0);
-//    glRasterPos2i(100 - (4 * str.length()), 300 + 7);
-//    for (const char &letter : str) {
-//        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
-//    }
 
     glFlush();  // Render now
 }
@@ -206,6 +208,11 @@ void cursor(int x, int y) {
     } else {
         s.release();
     }
+    if(b.isOverlapping(x, y)) {
+        b.hover();
+    } else {
+        b.release();
+    }
     glutPostRedisplay();
 }
 
@@ -217,7 +224,11 @@ void mouse(int button, int state, int x, int y) {
     } else {
         s.release();
     }
-
+    if(button == GLUT_LEFT_BUTTON && b.isOverlapping(x, y)) {
+        b.pressDown();
+    } else {
+        b.release();
+    }
     glutPostRedisplay();
 }
 
@@ -237,9 +248,28 @@ void artistAlbum() {
         getline(ss, substr, ',');
         data.push_back(substr);
     }
-    artist = data[0];
-    album = data[1];
+    album = data[0];
+    artist = data[1];
+    strReplace(album, ' ', '-');
+    strReplace(artist, ' ', '-');
+    // run python script
+    string command = python + " ../lyrics.py " + artist + " " + album;
+    system(command.c_str());
+    map<string, unique_ptr<Song>> songMap = readFromFolder("albums" + std::string("/") +album + '_' + artist.erase(0, 1), rap);
+    testVector.clear();
+
+    for (auto const& [key, val] : songMap)
+    {
+        heights.push_back(val->calculateUniqueStat());
+    }
+    test.setUniqueStats(heights);
 }
+
+void typeMusic() {
+    bool change = !rap;
+    rap = change;
+}
+
 
 /* Main function: GLUT runs as a console application starting at main()  */
 int main(int argc, char** argv) {

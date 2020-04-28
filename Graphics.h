@@ -49,4 +49,6 @@ void mouse(int button, int state, int x, int y);
 // first index is artist, second index is album
 void artistAlbum();
 
+void typeMusic();
+
 #endif //BL_CH_CW_JS_FINAL_PROJECT_GRAPHICS_GRAPHICS_H

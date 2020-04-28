@@ -28,6 +28,7 @@ BarGraph::BarGraph(int startPixelx, int startPixely, int yAxisHeight, int xAxisL
     maxHeight = uniqueStats[maxIndex];
 }
 void BarGraph::draw() const{
+    //cout << this->uniqueStats[0] << endl;
     //Draw x-axis
     glBegin(GL_LINES);
     glColor3f(0,0,0);
@@ -53,7 +54,7 @@ void BarGraph::draw() const{
 
         leftX = leftX + 2;
         int rightX = leftX + barWidth;
-        int topY = bottomY - (uniqueStats[c] * heightMultiplier);
+        int topY = bottomY - (this->uniqueStats[c] * heightMultiplier);
 
         glBegin(GL_QUADS);
         glColor3f(0,0,1);
@@ -167,5 +168,9 @@ void BarGraph::setXAxisTitle(string xAxisTitle){
     this->xAxisTitle=xAxisTitle;
 }
 void BarGraph::setUniqueStats(vector<double> uniqueStats){
-    this->uniqueStats=uniqueStats;
+    this->uniqueStats = uniqueStats;
 }
+
+//void BarGraph::update(vector<double> nums) {
+//    this
+//}

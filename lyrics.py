@@ -8,6 +8,7 @@ from spotify import get_spot_stats
 
 artist = sys.argv[1]
 album = sys.argv[2]
+artist = artist[1:]
 album_start_link = 'http://genius.com/albums/'
 link = album_start_link + artist.replace(' ', '-').lower() + '/' + album.replace(' ', '-')
 page = requests.get(album_start_link + artist.replace(' ', '-').lower() + '/' + album.replace(' ', '-').lower()).text.split('class')

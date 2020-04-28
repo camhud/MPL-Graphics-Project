@@ -1,7 +1,7 @@
 #include "Graphics.h"
-#include "Button.h"
-//#include "SubmitButton.h"
 #include "Quad.h"
+#include "Button.h"
+#include "SubmitButton.h"
 #include "BarGraph.h"
 #include <time.h>
 #include <sstream>
@@ -14,6 +14,8 @@ string artist;
 string album;
 
 Button bt({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Submit");
+SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "test");
+
 Quad input({0.0, 1.0, 1.0}, {100, 300}, 250, 50);
 vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
 BarGraph test(400, 500, 300, 300, "title", "test", "test", testVector);
@@ -53,6 +55,7 @@ void display() {
      */
     glRasterPos2i(250 - (4 * str.length()), 250 + 7);
     bt.draw();
+    s.draw();
 
     test.draw();
 

@@ -15,4 +15,16 @@ pulling lyrics and song lengths.
 
 A graph is made based on the type of song, which is the polymorphism aspect.  Certain types of songs have different 
 stats.  A pop song calculates different stats than rap song.  This took a hot minute so please appreciate.
+*Note: not all albums and artists will work because of the way Spotifies API chooses to respresent album titles as string in contrast
+with the way Genius represents these titles. Below is a list of working examples:
 
+
+Rap:
+- care for me, saba
+- damn, kendrick lamar
+- circles, mac miller
+
+Pop:
+- my world, justin bieber
+- believe, justin bieber
+- the fame, lady gaga

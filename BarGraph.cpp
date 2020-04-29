@@ -101,6 +101,15 @@ void BarGraph::draw() const{
     for (const char &letter : yAxisTitle) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
+    // Draw max unit
+    string maxText = "max value: " + to_string(maxHeight);
+    int xMaxTitle = startPixelx - 20;
+    int yMaxTitle = startPixely - yAxisHeight;
+    glColor3f(0, 0, 0);
+    glRasterPos2i(xMaxTitle - 7*size(maxText) - 15, yMaxTitle);
+    for (const char &letter : maxText) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
 
 
     // Don't forget to set the color to the fill field

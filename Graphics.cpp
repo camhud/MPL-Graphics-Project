@@ -254,10 +254,14 @@ void artistAlbum() {
     system(command.c_str());
     map<string, unique_ptr<Song>> songMap = readFromFolder("albums" + std::string("/") +album + '_' + artist.erase(0, 1), rap);
     heights.clear();
-
+    double max = 0.0;
     for (auto const& [key, val] : songMap)
     {
-        heights.push_back(val->calculateUniqueStat());
+        double stat = val->calculateUniqueStat();
+        heights.push_back(stat);
+        if (stat > max) {
+            max = stat;
+        }
     }
     if (rap) {
         test.setYaAxisTitle("Unique words/Sec");
@@ -265,6 +269,7 @@ void artistAlbum() {
         test.setYaAxisTitle("Popularity Score/Length");
     }
     test.setNumBars(size(heights));
+    test.setMaxHeight(max);
     test.setUniqueStats(heights);
 }
 

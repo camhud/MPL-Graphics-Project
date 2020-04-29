@@ -254,11 +254,12 @@ void artistAlbum() {
     system(command.c_str());
     map<string, unique_ptr<Song>> songMap = readFromFolder("albums" + std::string("/") +album + '_' + artist.erase(0, 1), rap);
     heights.clear();
+    heights.resize(size(songMap));
     double max = 0.0;
     for (auto const& [key, val] : songMap)
     {
         double stat = val->calculateUniqueStat();
-        heights.push_back(stat);
+        heights[val->getIndex() - 1] = (stat);
         if (stat > max) {
             max = stat;
         }

@@ -29,13 +29,12 @@ endif ()
 
 add_executable(graphics Graphics.cpp  Button.cpp  Quad.cpp BarGraph.cpp SubmitButton.cpp BooleanButton.cpp
                 Album.cpp Song.cpp RapSong.cpp PopSong.cpp)
-add_executable(graphicsGraphTester BarGraph.h BarGraph.cpp Quad.h Quad.cpp GraphicsTest.h GraphicsTest.cpp Button.cpp Button.h)
-add_executable(BL_CH_CW_JS_Final_Project_Graphics
-        Album.cpp
-        Song.cpp
-        RapSong.cpp
-        PopSong.cpp
-        main.cpp BooleanButton.cpp BooleanButton.h)
+#add_executable(BL_CH_CW_JS_Final_Project_Graphics
+#        Album.cpp
+#        Song.cpp
+#        RapSong.cpp
+#        PopSong.cpp
+#        main.cpp BooleanButton.cpp BooleanButton.h)
 
 if (WIN32)
     target_link_libraries (graphics ${OPENGL_LIBRARIES} freeglut)

@@ -29,11 +29,11 @@ BooleanButton b({1.0, 1.0, 0.0}, {250, 310}, 250, 50, "Not rap?");
 //SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "test");
 Quad input({0.0, 1.0, 1.0}, {100, 500}, 250, 50);
 vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
-BarGraph test(500, 500, 300, 300, "title", "test", "test", testVector);
+BarGraph test(500, 500, 300, 300, "Song Analysis", "", "", testVector);
 
 void init() {
     width = 1000;
-    height = 1000;
+    height = 750;
     srand(time(0));
 }
 
@@ -253,11 +253,16 @@ void artistAlbum() {
     string command = python + " ../lyrics.py " + artist + " " + album;
     system(command.c_str());
     map<string, unique_ptr<Song>> songMap = readFromFolder("albums" + std::string("/") +album + '_' + artist.erase(0, 1), rap);
-    testVector.clear();
+    heights.clear();
 
     for (auto const& [key, val] : songMap)
     {
         heights.push_back(val->calculateUniqueStat());
+    }
+    if (rap) {
+        test.setYaAxisTitle("Unique words/Second");
+    } else {
+        test.setYaAxisTitle("Popularity Score/Song Length");
     }
     test.setUniqueStats(heights);
 }
@@ -265,7 +270,6 @@ void artistAlbum() {
 void typeMusic() {
     bool change = !rap;
     rap = change;
-    cout << boolalpha << rap;
 }
 
 

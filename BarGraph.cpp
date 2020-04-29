@@ -75,7 +75,7 @@ void BarGraph::draw() const{
         leftX = rightX;
     }
 
-    //Draws x-axis title
+    //Draws title
     int xCenterTitle = startPixelx + (xAxisLength/2);
     int yCenterTitle = startPixely - yAxisHeight - 15;
     glColor3f(0, 0, 0);
@@ -86,7 +86,7 @@ void BarGraph::draw() const{
 
     //Draws x-axis title
     int xCenter = startPixelx + (xAxisLength/2);
-    int yCenter = startPixely + 15;
+    int yCenter = startPixely + 40;
     glColor3f(0, 0, 0);
     glRasterPos2i(xCenter - (4 * xAxisTitle.length()), yCenter + 7);
     for (const char &letter : xAxisTitle) {
@@ -110,6 +110,20 @@ void BarGraph::draw() const{
     for (const char &letter : maxText) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
+
+    //draw x-axis units
+    int xUnitTitle = startPixelx + (barWidth/2) + 1;
+    int yUnitTitle = startPixely + 15;
+    for(int c = 0; c < numBars; ++c){
+        glColor3f(0, 0, 0);
+        glRasterPos2i(xUnitTitle, yUnitTitle);
+        string unit = to_string(c+1);
+        for (const char &letter : unit) {
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, letter);
+        }
+        xUnitTitle = xUnitTitle + 3 + barWidth - unit.length();
+    }
+
 
 
     // Don't forget to set the color to the fill field

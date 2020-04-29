@@ -21,6 +21,7 @@ int wd;
 string str;
 string artist;
 string album;
+string prompt = "Enter album, artist";
 vector<double> heights;
 bool rap = true;
 
@@ -28,8 +29,9 @@ SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Submit");
 BooleanButton b({1.0, 1.0, 0.0}, {250, 310}, 250, 50, "Change Genre");
 //SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "test");
 Quad input({0.0, 1.0, 1.0}, {250, 500}, 250, 50);
+Quad promptBox({1.0, 1.0, 1.0}, {250, 450}, 250, 50);
 vector<double> testVector = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
-BarGraph test(700, 500, 300, 300, "Song Analysis", "", "Tracks", testVector);
+BarGraph test(700, 500, 300, 300, "Song Analysis", "", "Tracks in order of 1 to n", testVector);
 
 void init() {
     width = 1200;
@@ -68,7 +70,9 @@ void display() {
     b.draw();
     test.draw();
     input.draw();
+    promptBox.draw();
     glutKeyboardFunc(kbd);
+
     glRasterPos2f(0., 0.);
     glColor3f(0, 0, 0);
     glRasterPos2i(250 - (4 * str.length()), 500 + 7);
@@ -76,6 +80,12 @@ void display() {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
 
+    glRasterPos2f(0., 0.);
+    glColor3f(0, 0, 0);
+    glRasterPos2i(250 - (4 * prompt.length()), 450 + 7);
+    for (const char &letter : prompt) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
 
     glFlush();  // Render now
 }

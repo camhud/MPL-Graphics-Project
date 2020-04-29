@@ -43,7 +43,7 @@ int main() {
         cout << "Song Index: " << val->getIndex()<< endl;
         cout << "Song Popularity: " << val->getPopularityScore()<< endl;
     }
-    fs::remove_all("albums");
+//    fs::remove_all("albums");
     return 0;
 }
 

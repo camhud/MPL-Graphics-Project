@@ -237,6 +237,12 @@ void timer(int dummy) {
 
 // first index is artist, second index is album
 void artistAlbum() {
+    // root directory where everything will be stored
+    string root = "albums";
+    // creates directory if it doesnt exist
+    if (!fs::exists(root)) {
+        fs::create_directories(root);
+    }
     std::vector<std::string> data;
     std::stringstream ss(str);
     while(ss.good())

@@ -28,7 +28,7 @@ SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Submit");
 BooleanButton b({1.0, 1.0, 0.0}, {250, 310}, 250, 50, "Change Genre");
 //SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "test");
 Quad input({0.0, 1.0, 1.0}, {250, 500}, 250, 50);
-vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
+vector<double> testVector = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
 BarGraph test(700, 500, 300, 300, "Song Analysis", "", "Tracks", testVector);
 
 void init() {
@@ -264,7 +264,7 @@ void artistAlbum() {
         }
     }
     if (rap) {
-        test.setYaAxisTitle("Unique words/Sec");
+        test.setYaAxisTitle("Unique words/Sec  ");
     } else {
         test.setYaAxisTitle("Popularity Score/Length");
     }

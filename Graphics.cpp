@@ -27,12 +27,12 @@ bool rap = true;
 SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "Submit");
 BooleanButton b({1.0, 1.0, 0.0}, {250, 310}, 250, 50, "Not rap?");
 //SubmitButton s({1.0, 1.0, 0.0}, {250, 250}, 250, 50, "test");
-Quad input({0.0, 1.0, 1.0}, {100, 500}, 250, 50);
+Quad input({0.0, 1.0, 1.0}, {250, 500}, 250, 50);
 vector<double> testVector = {0.1,1.5,6.7,5.8,8.9,2.4,6.5,1.5};
-BarGraph test(500, 500, 300, 300, "Song Analysis", "", "", testVector);
+BarGraph test(700, 500, 300, 300, "Song Analysis", "", "Tr", testVector);
 
 void init() {
-    width = 1000;
+    width = 1200;
     height = 750;
     srand(time(0));
 }
@@ -71,7 +71,7 @@ void display() {
     glutKeyboardFunc(kbd);
     glRasterPos2f(0., 0.);
     glColor3f(0, 0, 0);
-    glRasterPos2i(100 - (4 * str.length()), 500 + 7);
+    glRasterPos2i(250 - (4 * str.length()), 500 + 7);
     for (const char &letter : str) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
@@ -260,9 +260,9 @@ void artistAlbum() {
         heights.push_back(val->calculateUniqueStat());
     }
     if (rap) {
-        test.setYaAxisTitle("Unique words/Second");
+        test.setYaAxisTitle("Unique words/Sec");
     } else {
-        test.setYaAxisTitle("Popularity Score/Song Length");
+        test.setYaAxisTitle("Popularity Score/Length");
     }
     test.setUniqueStats(heights);
 }
